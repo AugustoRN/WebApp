@@ -122,6 +122,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Help\DatabaseWWeb.mdf" />
+    <Content Include="Help\DatabaseWWeb_log.ldf">
+      <DependentUpon>DatabaseWWeb.mdf</DependentUpon>
+    </Content>
     <Content Include="Imagens\sem-imagem-avatar.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
