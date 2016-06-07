@@ -11,5 +11,8 @@ namespace WebApp.Repositorio
         IEnumerable<T> GetAll();
         void Adiciona(T  u);
         IList<T> Lista();
+        T BuscarPorId(int? id);
+        void Editar(T t);
+        void Remover(T t);
     }
 }

@@ -14,7 +14,7 @@ namespace WebApp.ContextoBD
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Anuncio>().HasRequired(a => a.Usuario);
+            modelBuilder.Entity<Anuncio>().HasRequired(a => a.Usuario);
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApp.ContextoBD;
@@ -31,6 +32,26 @@ namespace WebApp.Repositorio
         public IList<Anuncio> Lista()
         {
             return contexto.Anuncios.ToList();
+        }
+
+
+        public Anuncio BuscarPorId(int? id)
+        {
+            Anuncio a = new Anuncio();
+            a = contexto.Anuncios.Find(id);
+            return a;
+        }
+
+        public void Editar(Anuncio t)
+        {
+            contexto.Entry(t).State = EntityState.Modified;
+            contexto.SaveChanges();
+        }
+
+        public void Remover(Anuncio t)
+        {
+            contexto.Anuncios.Remove(t);
+            contexto.SaveChanges();
         }
     }
 }

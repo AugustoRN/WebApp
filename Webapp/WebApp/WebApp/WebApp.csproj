@@ -79,6 +79,14 @@
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.1.1\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -143,6 +151,18 @@
     <Compile Include="Migrations\201606070146420_primeira1.Designer.cs">
       <DependentUpon>201606070146420_primeira1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606070205207_AnuncioComUsuario.cs" />
+    <Compile Include="Migrations\201606070205207_AnuncioComUsuario.Designer.cs">
+      <DependentUpon>201606070205207_AnuncioComUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070234083_AnuncioComUsuario1.cs" />
+    <Compile Include="Migrations\201606070234083_AnuncioComUsuario1.Designer.cs">
+      <DependentUpon>201606070234083_AnuncioComUsuario1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070312224_AnuncioComUsuario2.cs" />
+    <Compile Include="Migrations\201606070312224_AnuncioComUsuario2.Designer.cs">
+      <DependentUpon>201606070312224_AnuncioComUsuario2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorio\AnuncioRepositorio.cs" />
     <Compile Include="Repositorio\IRepositorio.cs" />
@@ -177,7 +197,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Repositorio\Models\" />
     <Folder Include="Views\Arquivo\" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +209,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606070146420_primeira1.resx">
       <DependentUpon>201606070146420_primeira1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070205207_AnuncioComUsuario.resx">
+      <DependentUpon>201606070205207_AnuncioComUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070234083_AnuncioComUsuario1.resx">
+      <DependentUpon>201606070234083_AnuncioComUsuario1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070312224_AnuncioComUsuario2.resx">
+      <DependentUpon>201606070312224_AnuncioComUsuario2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

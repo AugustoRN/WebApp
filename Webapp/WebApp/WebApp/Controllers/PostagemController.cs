@@ -15,6 +15,9 @@ namespace WebApp.Controllers
 {
     public class PostagemController : Controller
     {
+        private AnuncioRepositorio anuncioDAO;
+        private UsuarioRepositorio usuarioDAO;
+        /*
         private Contexto db = new Contexto();
         private IRepositorio<Anuncio> _repositorioAnuncio;
 
@@ -29,9 +32,22 @@ namespace WebApp.Controllers
             int numeroPagina = pagina ?? 1;
 
             return View(_repositorioAnuncio.GetAll().ToPagedList(numeroPagina,tamanhoPagina));
+        }*/
+
+        public PostagemController(AnuncioRepositorio anuncioDAO, UsuarioRepositorio usuarioDAO)
+        {
+            this.anuncioDAO = anuncioDAO;
+            this.usuarioDAO = usuarioDAO;
+
         }
 
+        public ActionResult Anunciar(int? pagina)
+        {
+            int tamanhoPagina = 3;
+            int numeroPagina = pagina ?? 1;
 
+            return View(anuncioDAO.GetAll().ToPagedList(numeroPagina, tamanhoPagina));
+        }
         
       
 
@@ -42,7 +58,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
+            Anuncio anuncio = anuncioDAO.BuscarPorId(id);
             if (anuncio == null)
             {
                 return HttpNotFound();
@@ -53,13 +69,14 @@ namespace WebApp.Controllers
         // GET: Postagem/Create
         public ActionResult Create()
         {
+            ViewBag.Usuarios = usuarioDAO.Lista();
             return View();
         }
 
     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Descricao,Imagem,ImagemTipo,Contador")] Anuncio anuncio,HttpPostedFileBase upload)
+        public ActionResult Create(Anuncio anuncio,HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -76,12 +93,12 @@ namespace WebApp.Controllers
                     anuncio.Imagem = arqImagem.Imagem;
                     anuncio.ImagemTipo = arqImagem.ImagemTipo;
                 }
-                db.Anuncios.Add(anuncio);
-                db.SaveChanges();
+                anuncioDAO.Adiciona(anuncio);
+               
                 TempData["mensagem"] = string.Format("{0}: foi incluido com sucesso", anuncio.Titulo);
                 return RedirectToAction("Anunciar");
             }
-
+           
             return View(anuncio);
         }
 
@@ -92,18 +109,19 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
+            Anuncio anuncio = anuncioDAO.BuscarPorId(id);
             if (anuncio == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Usuarios = usuarioDAO.Lista();
             return View(anuncio);
         }
 
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Descricao,Imagem,ImagemTipo,Contador")] Anuncio anuncio,HttpPostedFileBase upload)
+        public ActionResult Edit(Anuncio anuncio,HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -120,8 +138,7 @@ namespace WebApp.Controllers
                     anuncio.Imagem = arqImagem.Imagem;
                     anuncio.ImagemTipo = arqImagem.ImagemTipo;
                 }
-                db.Entry(anuncio).State = EntityState.Modified;
-                db.SaveChanges();
+                anuncioDAO.Editar(anuncio);
                 TempData["mensagem"] = string.Format("{0}: foi Editado com sucesso", anuncio.Titulo);
                 return RedirectToAction("Anunciar");
             }
@@ -136,7 +153,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
+            Anuncio anuncio = anuncioDAO.BuscarPorId(id);
             if (anuncio == null)
             {
                 return HttpNotFound();
@@ -149,20 +166,19 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Anuncio anuncio = db.Anuncios.Find(id);
-            db.Anuncios.Remove(anuncio);
-            db.SaveChanges();
+            Anuncio anuncio = anuncioDAO.BuscarPorId(id);
+            anuncioDAO.Remover(anuncio);
             TempData["mensagem"] = string.Format("{0}: foi Deletado com sucesso", anuncio.Titulo);
             return RedirectToAction("Anunciar");
         }
-
+        /*
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

@@ -14,6 +14,10 @@ namespace WebApp.Domain
         public string ImagemTipo { get; set; }
         public int Contador { get; set; }
 
+        public int UsuarioId { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
+
 
     }
 }
