@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ContextoBD\Contexto.cs" />
     <Compile Include="Controllers\ArquivoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PostagemController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Domain\Usuario.cs" />
@@ -163,7 +164,16 @@
     <Compile Include="Migrations\201606070312224_AnuncioComUsuario2.Designer.cs">
       <DependentUpon>201606070312224_AnuncioComUsuario2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606070316487_AnuncioComUsuario3.cs" />
+    <Compile Include="Migrations\201606070316487_AnuncioComUsuario3.Designer.cs">
+      <DependentUpon>201606070316487_AnuncioComUsuario3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070343298_AnuncioComUsuario4.cs" />
+    <Compile Include="Migrations\201606070343298_AnuncioComUsuario4.Designer.cs">
+      <DependentUpon>201606070343298_AnuncioComUsuario4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Repositorio\AnuncioRepositorio.cs" />
     <Compile Include="Repositorio\IRepositorio.cs" />
     <Compile Include="Domain\Anuncio.cs" />
@@ -189,6 +199,7 @@
     <Content Include="Views\Postagem\Details.cshtml" />
     <Content Include="Views\Postagem\Edit.cshtml" />
     <Content Include="Views\Usuario\Form.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -218,6 +229,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606070312224_AnuncioComUsuario2.resx">
       <DependentUpon>201606070312224_AnuncioComUsuario2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070316487_AnuncioComUsuario3.resx">
+      <DependentUpon>201606070316487_AnuncioComUsuario3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070343298_AnuncioComUsuario4.resx">
+      <DependentUpon>201606070343298_AnuncioComUsuario4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<form action="@Url.Action("Autenticar")" method="post">
+    
+    <label for="login">Login:</label>
+    <input id="login" name="login" type="text" class="form-control" />
+
+    <label for="senha">Senha:</label>
+    <input id="senha" name="senha" type="password" class="form-control" />
+    <br />
+    <input type="submit" value="Autenticar" class="btn btn-primary" />
+
+</form>

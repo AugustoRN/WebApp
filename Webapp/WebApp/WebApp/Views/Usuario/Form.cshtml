@@ -1,4 +1,4 @@
-﻿@model WebApp.Domain.Usuario
+﻿@model WebApp.Models.UsuarioModel
 @{
     ViewBag.Title = "Registro Login";
 }
@@ -28,11 +28,7 @@
     @Html.TextBoxFor(u => u.Senha, new { @class = "form-control" })
    
 
-    <br />
-    @Html.LabelFor(u => u.Idade, "Idade")
-    <br />
-    @Html.ValidationMessageFor(u => u.Idade)
-    @Html.TextBoxFor(u => u.Idade, new { @class = "form-control" })
+    
    
     <br />
     <br />

@@ -17,22 +17,7 @@ namespace WebApp.Controllers
     {
         private AnuncioRepositorio anuncioDAO;
         private UsuarioRepositorio usuarioDAO;
-        /*
-        private Contexto db = new Contexto();
-        private IRepositorio<Anuncio> _repositorioAnuncio;
-
-         public PostagemController()
-        {
-            _repositorioAnuncio = new AnuncioRepositorio(new Contexto());
-
-        }
-        public ActionResult Anunciar(int? pagina)
-        {
-            int tamanhoPagina = 3;
-            int numeroPagina = pagina ?? 1;
-
-            return View(_repositorioAnuncio.GetAll().ToPagedList(numeroPagina,tamanhoPagina));
-        }*/
+       
 
         public PostagemController(AnuncioRepositorio anuncioDAO, UsuarioRepositorio usuarioDAO)
         {
@@ -93,6 +78,7 @@ namespace WebApp.Controllers
                     anuncio.Imagem = arqImagem.Imagem;
                     anuncio.ImagemTipo = arqImagem.ImagemTipo;
                 }
+                
                 anuncioDAO.Adiciona(anuncio);
                
                 TempData["mensagem"] = string.Format("{0}: foi incluido com sucesso", anuncio.Titulo);
@@ -102,7 +88,7 @@ namespace WebApp.Controllers
             return View(anuncio);
         }
 
-       //get
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,7 +104,7 @@ namespace WebApp.Controllers
             return View(anuncio);
         }
 
-      
+      [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Anuncio anuncio,HttpPostedFileBase upload)
@@ -147,6 +133,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Postagem/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
