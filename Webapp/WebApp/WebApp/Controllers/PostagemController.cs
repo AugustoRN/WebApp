@@ -28,7 +28,7 @@ namespace WebApp.Controllers
 
         public ActionResult Anunciar(int? pagina)
         {
-            int tamanhoPagina = 3;
+            int tamanhoPagina = 2;
             int numeroPagina = pagina ?? 1;
 
             return View(anuncioDAO.GetAll().ToPagedList(numeroPagina, tamanhoPagina));
@@ -52,13 +52,14 @@ namespace WebApp.Controllers
         }
 
         // GET: Postagem/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Usuarios = usuarioDAO.Lista();
             return View();
         }
 
-    
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Anuncio anuncio,HttpPostedFileBase upload)
