@@ -1,0 +1,75 @@
+﻿@model WebApp.Domain.Anuncio
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Deseja deletar?</h3>
+<div>
+    <h4>Anuncio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        @if (Model.Imagem != null)
+        {
+            <dd>
+
+                Imagem
+            </dd>
+            <dd>
+
+                <img class="img-thumbnail" src="@Url.Action("ExibirImagem", "arquivo", new { id = Model.Id })" width="150" height="150" />
+            </dd>
+
+
+        }
+        else
+        {
+            <dd>
+
+                Imagem
+            </dd>
+
+
+            <dd>
+                <img class="img-thumbnail" width="150" height="150" src="~/Imagens/sem-imagem-avatar.png" />
+            </dd>
+
+
+        }
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Contador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contador)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar a Lista", "Anunciar")
+        </div>
+    }
+</div>

@@ -1,0 +1,72 @@
+﻿
+@model WebApp.Domain.Anuncio
+
+<a id="Criar" href="@Url.Action("Create")"class="btn btn-success">
+    <span class="glyphicon glyphicon-plus"> Adicionar Novo </span>
+</a>
+<div class="well">
+    <table>
+        <tr>
+            <td rowspan="3">
+                @if (Model.Imagem!=null)
+                {
+                    <div class="pull-left" style="margin-right:10px">
+                        <img class="img-thumbnail" src="@Url.Action("ExibirImagem", "arquivo", new { id = Model.Id })" width="150" height="150"   />
+                    </div>
+                }
+                else
+                {
+                    <div class="pull-left" style="margin-right:10px">
+
+                        <img  class="img-thumbnail" width="150" height="150"  src="~/Imagens/sem-imagem-avatar.png" />
+                    </div>
+                        
+                }
+
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-lg">
+                    <strong>@Model.Titulo</strong>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-lg">
+                    <strong>-</strong>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-success btn-lg">
+                    <strong>+</strong>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.Descricao
+                <br />
+                @Model.Contador
+                <br/>
+                   
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        @Html.ActionLink("Details", "Details", new { id = Model.Id }) 
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+                    </button>
+                </div>
+            </td> 
+        </tr>
+    </table>
+
+
+
+</div>

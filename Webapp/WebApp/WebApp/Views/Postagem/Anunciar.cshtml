@@ -1,0 +1,23 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WebApp.Domain.Anuncio>
+
+@{
+    ViewBag.Title = "Anuncios";
+}
+
+
+
+@foreach (var a in Model)
+{
+    @Html.Partial("_Anuncios",a)
+    
+}
+<p class="text-primary">
+    Página @Model.PageNumber de @Model.PageCount
+
+</p>
+
+<span class="btn-grupo pull-right">
+@Html.PagedListPager(Model, pagina => Url.Action("Anunciar", new { pagina }))
+</span>
