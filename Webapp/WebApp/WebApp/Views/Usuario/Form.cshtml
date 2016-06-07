@@ -1,0 +1,41 @@
+﻿@model WebApp.Domain.Usuario
+@{
+    ViewBag.Title = "Registro Login";
+}
+
+<h1>Registro Login </h1>
+@using (Html.BeginForm("Adiciona", "Usuario", FormMethod.Post))
+{
+
+    <br />
+    @Html.LabelFor(u => u.Nome, "Nome")
+    <br />
+    @Html.ValidationMessageFor(u => u.Nome)
+    @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+    
+
+    <br />
+    @Html.LabelFor(u => u.Email, "E-mail")
+    <br />
+    @Html.ValidationMessageFor(u => u.Email)
+    @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+   
+
+    <br />
+    @Html.LabelFor(u => u.Senha, "Senha")
+    <br />
+    @Html.ValidationMessageFor(u => u.Senha)
+    @Html.TextBoxFor(u => u.Senha, new { @class = "form-control" })
+   
+
+    <br />
+    @Html.LabelFor(u => u.Idade, "Idade")
+    <br />
+    @Html.ValidationMessageFor(u => u.Idade)
+    @Html.TextBoxFor(u => u.Idade, new { @class = "form-control" })
+   
+    <br />
+    <br />
+    <input type="submit" value="Cadastrar" class="btn btn-success" />
+}
+

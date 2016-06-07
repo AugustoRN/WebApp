@@ -9,5 +9,7 @@ namespace WebApp.Repositorio
     interface IRepositorio<T> where T : class
     {
         IEnumerable<T> GetAll();
+        void Adiciona(T  u);
+        IList<T> Lista();
     }
 }

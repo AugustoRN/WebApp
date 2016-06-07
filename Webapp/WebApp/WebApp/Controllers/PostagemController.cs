@@ -25,7 +25,7 @@ namespace WebApp.Controllers
         }
         public ActionResult Anunciar(int? pagina)
         {
-            int tamanhoPagina = 5;
+            int tamanhoPagina = 3;
             int numeroPagina = pagina ?? 1;
 
             return View(_repositorioAnuncio.GetAll().ToPagedList(numeroPagina,tamanhoPagina));

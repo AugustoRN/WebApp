@@ -45,6 +45,15 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -67,6 +76,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -112,11 +124,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ContextoBD\Contexto.cs" />
     <Compile Include="Controllers\ArquivoController.cs" />
     <Compile Include="Controllers\PostagemController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Domain\Usuario.cs" />
+    <Compile Include="Migrations\201606060017506_InitialCreate.cs" />
+    <Compile Include="Migrations\201606060017506_InitialCreate.Designer.cs">
+      <DependentUpon>201606060017506_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070101110_primeira.cs" />
+    <Compile Include="Migrations\201606070101110_primeira.Designer.cs">
+      <DependentUpon>201606070101110_primeira.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070146420_primeira1.cs" />
+    <Compile Include="Migrations\201606070146420_primeira1.Designer.cs">
+      <DependentUpon>201606070146420_primeira1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorio\AnuncioRepositorio.cs" />
     <Compile Include="Repositorio\IRepositorio.cs" />
     <Compile Include="Domain\Anuncio.cs" />
@@ -124,6 +151,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -140,6 +168,7 @@
     <Content Include="Views\Postagem\Delete.cshtml" />
     <Content Include="Views\Postagem\Details.cshtml" />
     <Content Include="Views\Postagem\Edit.cshtml" />
+    <Content Include="Views\Usuario\Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +179,17 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Arquivo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606060017506_InitialCreate.resx">
+      <DependentUpon>201606060017506_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070101110_primeira.resx">
+      <DependentUpon>201606070101110_primeira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070146420_primeira1.resx">
+      <DependentUpon>201606070146420_primeira1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

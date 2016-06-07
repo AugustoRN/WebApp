@@ -20,5 +20,17 @@ namespace WebApp.Repositorio
         {
             return contexto.Anuncios.ToList();
         }
+
+        public void Adiciona(Anuncio u)
+        {
+            contexto.Anuncios.Add(u);
+            contexto.SaveChanges();
+
+        }
+
+        public IList<Anuncio> Lista()
+        {
+            return contexto.Anuncios.ToList();
+        }
     }
 }
