@@ -16,7 +16,7 @@ namespace WebApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //chama o simpleMembership
 
-            WebSecurity.InitializeDatabaseConnection("Contexto", "Usuarios", "Id", "Email", true);
+            WebSecurity.InitializeDatabaseConnection("Contexto", "Usuarios", "Id", "Email", false);
         }
     }
 }
