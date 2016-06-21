@@ -11,10 +11,13 @@ namespace WebApp.ContextoBD
     {
         public DbSet<Anuncio> Anuncios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<Bomba> Bombas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Anuncio>().HasRequired(a => a.Usuario);
+            
         }
 
     }

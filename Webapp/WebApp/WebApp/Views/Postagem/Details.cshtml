@@ -4,8 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
+<form method="post" action="@Url.Action("Bombar")">
 
+    <input name="anuncio" id="anuncio" readonly="readonly" value="@Model.Id" hidden="hidden" />
+    <button type="submit" name="valor" value="1"><p class="glyphicon glyphicon-plus"></p></button>
+    <button type="submit" name="valor" value="-1">
+        <p class="glyphicon glyphicon-minus"></p>
+    </button></form>
 <div>
     <h4>Anuncio</h4>
     <hr />
@@ -16,6 +22,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
         </dd>
 
         <dt>
@@ -56,16 +70,30 @@
         <dd>
             @Html.DisplayFor(model => model.UsuarioId)
         </dd>
-
-     
-
-        <dd>
-            @Html.DisplayFor(model => model.Contador)
-        </dd>
-
-    </dl>
+    
+   </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    
     @Html.ActionLink("Voltar a Lista", "Anunciar")
 </p>
+<form action="@Url.Action("Comenta")" method="post">
+
+    <label for="login">Digite seu Comentario</label><br />
+    <textarea style="width:50%" id="comentario" name="comentario" type="text" class="form-control-static" ></textarea>
+    
+    <input type="submit" value="Comentar" class="btn btn-success" />
+    <input name="anuncio" id="anuncio" readonly="readonly" value="@Model.Id" hidden="hidden"/>
+
+</form>
+
+<div class="jumbotron">
+    @foreach (var c in ViewBag.Chats)
+    {
+        <h4>@c.Usuario.Nome diz: </h4>
+        <p class="jumbotron" style="background-color:white">@c.Texto</p>
+    }   
+</div>
+
+
+

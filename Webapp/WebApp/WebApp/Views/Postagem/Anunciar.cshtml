@@ -5,11 +5,22 @@
 @{
     ViewBag.Title = "Anuncios";
 }
+<script type="text/javascript">
 
+    function detalhar(value) {
+        window.location.href = "/Postagem/Details/" + value;
+    }
+    function deletar(value) {
+        window.location.href = "/Postagem/Delete/" + value;
+    }
+
+
+</script>
 
 
 @foreach (var a in Model)
 {
+    
     @Html.Partial("_Anuncios",a)
     
 }

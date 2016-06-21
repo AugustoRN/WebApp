@@ -1,69 +1,72 @@
 ﻿
 @model WebApp.Domain.Anuncio
 
-<a id="Criar" href="@Url.Action("Create")"class="btn btn-success">
-    <span class="glyphicon glyphicon-plus"> Adicionar Novo </span>
-</a>
-<div class="well">
+
+
+
+
+<div class="well" style="background-color:black">
     <table>
         <tr>
             <td rowspan="3">
-                @if (Model.Imagem!=null)
+                @if (Model.Imagem != null)
                 {
                     <div class="pull-left" style="margin-right:10px">
-                        <img class="img-thumbnail" src="@Url.Action("ExibirImagem", "arquivo", new { id = Model.Id })" width="150" height="150"   />
+                        <img class="img-thumbnail" src="@Url.Action("ExibirImagem", "arquivo", new { id = Model.Id })" width="150" height="150" />
                     </div>
                 }
                 else
                 {
                     <div class="pull-left" style="margin-right:10px">
 
-                        <img  class="img-thumbnail" width="150" height="150"  src="~/Imagens/sem-imagem-avatar.png" />
+                        <img class="img-thumbnail" width="150" height="150" src="~/Imagens/sem-imagem-avatar.png" />
                     </div>
-                        
+
                 }
 
 
             </td>
             <td>
-                <a class="btn btn-primary btn-lg">
-                    <strong>@Model.Titulo</strong>
-                </a>
+                <h2 style="color:#428bca;">Titulo:</h2> 
+                <input id="btnProximaDefinicao"
+                       type="button"
+                       value="@Model.Titulo"
+                       class="btn btn-default btn-lg"
+                       onclick="detalhar(@Model.Id);" />
             </td>
             <td>
-                <a class="btn btn-danger btn-lg">
-                    <strong>-</strong>
-                </a>
+                @if (@Model.total > 0)
+                {
+                    <button style="color:#428bca" class=" btn btn-danger"> Bombando</button>
+                }
+                else
+                {
+                    <button style="color:#428bca" class=" btn btn-primary"> :((</button>
+                }
+
+
             </td>
-            <td>
-                <a class="btn btn-success btn-lg">
-                    <strong>+</strong>
-                </a>
-            </td>
+           
         </tr>
         <tr>
             <td>
-               Descrição:=>  @Model.Descricao
+                <p style="color:#428bca;">Descrição:  @Model.Descricao </p>
+                    
+                    <br />
+                <p style="color:#428bca;">Valor:  @Model.Valor </p>
+                    <br />
+                <p style="color:#428bca;">Usuario Que Realizou:  @Model.Usuario.Nome</p> 
                 <br />
-               Contador:=>  @Model.Contador
-                <br/>
-                Usuario Que Realizou:=>  @Model.Usuario.Nome
+                
             </td>
         </tr>
         <tr>
             <td>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Details", "Details", new { id = Model.Id }) 
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-                    </button>
+                   
+                  
                 </div>
-            </td> 
+            </td>
         </tr>
     </table>
 

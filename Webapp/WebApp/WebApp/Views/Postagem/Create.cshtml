@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm("Create", "Postagem", null, FormMethod.Post, new
 {
@@ -34,16 +34,17 @@
                 @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
     
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contador, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contador, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Contador, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
 
         <div class="form-group">
             @Html.Label("Imagem",  new { @class = "control-label col-md-2" })
@@ -52,20 +53,10 @@
             </div>
         </div>
 
-        <div class="form-group">
-            
-            @Html.LabelFor(model => model.UsuarioId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">                
-                @Html.DropDownListFor(model => model.UsuarioId, new SelectList(ViewBag.Usuarios, "Id", "Nome"),
-        new { @class = "form-control" })    
-                @Html.ValidationMessageFor(model => model.UsuarioId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
+       
 
-
-
-      
+       
         
        
 

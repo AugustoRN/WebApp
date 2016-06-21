@@ -7,49 +7,57 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+   
+
 </head>
-<body>
+<body style="background-color:transparent">
       @if (TempData["mensagem"] != null)
         {
             <div class="alert alert-success">@TempData["mensagem"]</div>
         }   
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-fixed-top" style="background-color:black">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="@Url.Action("Anunciar", "Postagem")">Bombando</a>
+                <a class="navbar-brand" href="@Url.Action("Anunciar", "Postagem")" style="color:white">Bombando</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                <li><a href="@Url.Action("Create", "Postagem")">Nova Promoção</a></li>
-                }
-                <li><a href="#">Page 2</a></li>
+                
+                <li><a href="@Url.Action("Create", "Postagem")" style="color:white">Nova Promoção</a></li>
+                
+                
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                
-               
+
+
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+                    <li><a href="#" style="color:white">@WebSecurity.CurrentUserName</a></li>
+                    <li><a href="@Url.Action("Logout", "Login")" style="color:white"><span class="glyphicon glyphicon-log-out"></span> Sair </a></li>
                 }
                 else
                 {
-                    <li><a href="@Url.Action("Index", "Login")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="@Url.Action("Form", "Usuario")"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
-                    
+                    <li><a href="@Url.Action("Index", "Login")" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="@Url.Action("Form", "Usuario")" style="color:white"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
+
                 }
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <br />
+    <div class="container" >
         <div class="col-xs-8">
           
             @RenderBody()
 
         </div>
     </div>
-   
+    
+    <div class="navbar navbar-fixed-bottom" style="background-color:black">
+        <div class="container-fluid">
+
+        </div>
+    </div>
+    
 </body>
 </html>
